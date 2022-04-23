@@ -1,23 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useState } from "react";
+import Input from "./components/Input";
+import Results from "./components/Results";
+import Menu from "./components/Menu";
 
 function App() {
+  const [displayMeal, setDisplayMeal] = useState([]);
+  const [data, setData] = useState([]);
+  const [showInput, setShowInput] = useState(false);
+  const [resData, setResData] = useState([
+    {
+      data: {
+        sumCal: 0,
+        sumCarb: 0,
+        sumFat: 0,
+        sumProt: 0,
+        avgCal: 0,
+        avgCarb: 0,
+        avgFat: 0,
+        avgProt: 0,
+      },
+    },
+  ]);
+
+  //console.log(resData[0].sumCal);
+
+  const url = "https://calorie-calculator-spring.herokuapp.com/getallmeal";
+
+  const mealItemsFetch = () => {
+    fetch(url)
+      .then((res) => {
+        return res.json();
+      })
+      .then((items) => {
+        return setData(items);
+      });
+  };
+
+  useEffect(() => {
+    mealItemsFetch();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Results setResData={setResData} resData={resData} />
+      <Menu
+        resData={resData}
+        setShowInput={setShowInput}
+        displayMeal={displayMeal}
+        setDisplayMeal={setDisplayMeal}
+      />
+      {showInput && (
+        <Input
+          data={data}
+          setShowInput={setShowInput}
+          resData={resData}
+          setResData={setResData}
+          setDisplayMeal={setDisplayMeal}
+          displayMeal={displayMeal}
+        />
+      )}
     </div>
   );
 }

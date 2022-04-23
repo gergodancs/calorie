@@ -1,13 +1,219 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Merriweather&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  color: #222;
+}
+body {
+  height: auto;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://cdn.pixabay.com/photo/2016/05/24/13/29/olive-oil-1412361_960_720.jpg");
+  background-size: cover;
+  overflow-y: scroll;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+h5 {
+  font-size: 25px;
+  text-align: center;
+  display: inline-block;
+}
+.App {
+  position: relative;
+  top: 40px;
+  margin: 0 auto;
+  width: 70vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(250, 235, 215, 0.397);
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.568) inset,
+    -2px -2px 3px rgba(0, 0, 0, 0.548) inset;
+}
+.menu__container {
+  width: 100%;
+  height: 80%;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  column-gap: 5rem;
+}
+.menu-list {
+  border-radius: 10px;
+  padding: 15px;
+  width: 40%;
+  min-height: 250px;
+
+  background-color: rgba(240, 248, 255, 0.568);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.459) inset,
+    -2px -2px 3px rgba(0, 0, 0, 0.486) inset;
+}
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+
+  row-gap: 2rem;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+.menu-fogyasztas {
+  text-align: left;
+}
+li {
+  margin-top: 10px;
+  font-size: 18px;
+}
+.results__container {
+  margin-top: 15px;
+  width: 92%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(185, 190, 190, 0.664);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.459) inset,
+    -2px -2px 3px rgba(0, 0, 0, 0.486) inset;
+}
+.results__container > div > span {
+  margin-left: 20px;
+}
+
+form {
+  width: 92%;
+  height: auto;
+  position: relative;
+  background-color: rgba(185, 190, 190, 0.664);
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  display: flex;
+
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.459) inset,
+    -2px -2px 3px rgba(0, 0, 0, 0.486) inset;
+}
+button {
+  outline: none;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  opacity: 0.7;
+  transition: 0.2s;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: aliceblue;
+  border: none;
+}
+button:hover {
+  transform: scale(0.95);
+  opacity: 1;
+}
+
+input {
+  max-width: 50%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  background-color: rgba(240, 248, 255, 0.74);
+}
+input:focus {
+  background-color: rgba(0, 0, 255, 0.171);
+}
+.autocomplete {
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  width: 200px;
+  top: 105%;
+  height: 100px;
+  left: 16%;
+  background-color: rgba(240, 248, 255, 0.555);
+  overflow-y: auto;
+  z-index: 5;
+}
+.h-5 {
+  color: red;
+  height: 30px;
+  width: 30px;
+}
+.selected-food {
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+.active {
+  text-decoration: line-through;
+}
+.selected-food:hover {
+  transform: scale(0.95);
+  color: rgb(78, 9, 9);
+}
+@media screen and (max-width: 1000px) {
+  h5 {
+    display: block;
+    font-size: 16px;
+  }
+  .results__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .results__container > div > span {
+    font-size: 10px;
+    margin-left: 5px;
+  }
+  button {
+    transform: scale(0.5);
+  }
+  button:hover {
+    transform: scale(0.4);
+  }
+  .App {
+    width: 90%;
+  }
+  .menu__container {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .menu-buttons {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    column-gap: 0;
+  }
+  .menu-list {
+    width: 90%;
+    height: auto;
+  }
+  form {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .menu-fogyasztas {
+    margin-bottom: 10px;
+  }
 }
