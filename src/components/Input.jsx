@@ -59,10 +59,12 @@ const Input = (props) => {
             setAmount(e.target.value);
           }}
         />
-        <button>Submit</button>
-        <button onClick={() => props.setShowInput(false)} type="button">
-          Close
-        </button>
+        <div className="form-buttons">
+          <button>Submit</button>
+          <button onClick={() => props.setShowInput(false)} type="button">
+            Close
+          </button>
+        </div>
       </form>
       {showList && (
         <ul className="autocomplete">

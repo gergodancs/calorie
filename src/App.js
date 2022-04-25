@@ -33,6 +33,7 @@ function App() {
         return res.json();
       })
       .then((items) => {
+        console.log(items);
         return setData(items);
       });
   };
