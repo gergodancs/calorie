@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import SetCtx from "../setContext";
 
-const Input = (props) => {
+const Input = () => {
   const [input, setInput] = useState("");
   const [amount, setAmount] = useState(0);
   const [id, setId] = useState(0);
@@ -10,10 +11,19 @@ const Input = (props) => {
   const [showList, setShowList] = useState(false);
   const [sugg, setSugg] = useState([]);
 
+  const {
+    data,
+    setShowInput,
+    resData,
+    setResData,
+    setDisplayMeal,
+    displayMeal,
+  } = useContext(SetCtx);
+
   let filtered;
 
   const autoComp2 = () => {
-    filtered = props.data.filter((item) => item.name.includes(input));
+    filtered = data.filter((item) => item.name.includes(input));
     setSugg(filtered);
   };
 
@@ -23,7 +33,7 @@ const Input = (props) => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    props.setDisplayMeal([...props.displayMeal, `${input}: ${amount}`]);
+    setDisplayMeal([...displayMeal, `${input}: ${amount}`]);
     setShowList(false);
 
     setPostData([...postData, { id: id, name: input, amount: Number(amount) }]);
@@ -36,8 +46,7 @@ const Input = (props) => {
       headers: { "Content-type": "application/json; charset=UTF-8" },
     })
       .then((response) => response.json())
-      .then((data) => props.setResData([{ data }]));
-    console.log("ez", props.resData);
+      .then((data) => setResData([{ data }]));
   };
   return (
     <>
@@ -61,7 +70,7 @@ const Input = (props) => {
         />
         <div className="form-buttons">
           <button>Submit</button>
-          <button onClick={() => props.setShowInput(false)} type="button">
+          <button onClick={() => setShowInput(false)} type="button">
             Close
           </button>
         </div>

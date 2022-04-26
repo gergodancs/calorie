@@ -3,6 +3,7 @@ import { useState } from "react";
 import Input from "./components/Input";
 import Results from "./components/Results";
 import Menu from "./components/Menu";
+import SetCtx from "./setContext";
 
 function App() {
   const [displayMeal, setDisplayMeal] = useState([]);
@@ -23,8 +24,6 @@ function App() {
     },
   ]);
 
-  //console.log(resData[0].sumCal);
-
   const url = "https://calorie-calculator-spring.herokuapp.com/getallmeal";
 
   const mealItemsFetch = () => {
@@ -33,7 +32,6 @@ function App() {
         return res.json();
       })
       .then((items) => {
-        console.log(items);
         return setData(items);
       });
   };
@@ -43,25 +41,22 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Results setResData={setResData} resData={resData} />
-      <Menu
-        resData={resData}
-        setShowInput={setShowInput}
-        displayMeal={displayMeal}
-        setDisplayMeal={setDisplayMeal}
-      />
-      {showInput && (
-        <Input
-          data={data}
-          setShowInput={setShowInput}
-          resData={resData}
-          setResData={setResData}
-          setDisplayMeal={setDisplayMeal}
-          displayMeal={displayMeal}
-        />
-      )}
-    </div>
+    <SetCtx.Provider
+      value={{
+        resData,
+        setResData,
+        setShowInput,
+        displayMeal,
+        setDisplayMeal,
+        data,
+      }}
+    >
+      <div className="App">
+        <Results />
+        <Menu />
+        {showInput && <Input />}
+      </div>
+    </SetCtx.Provider>
   );
 }
 
