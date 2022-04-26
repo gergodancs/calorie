@@ -9,7 +9,7 @@ function App() {
   const [displayMeal, setDisplayMeal] = useState([]);
   const [data, setData] = useState([]);
   const [showInput, setShowInput] = useState(false);
-  const [resData, setResData] = useState([
+  const [summaryData, setSumData] = useState([
     {
       data: {
         sumCal: 0,
@@ -43,8 +43,8 @@ function App() {
   return (
     <SetCtx.Provider
       value={{
-        resData,
-        setResData,
+        summaryData,
+        setSumData,
         setShowInput,
         displayMeal,
         setDisplayMeal,

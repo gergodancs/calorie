@@ -45,12 +45,12 @@ h5 {
     -2px -2px 3px rgba(0, 0, 0, 0.548) inset;
 }
 .menu__container {
-  width: 100%;
+  width: 90%;
   height: 80%;
   margin: 20px 0;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+
   column-gap: 5rem;
 }
 .menu-list {
@@ -75,7 +75,7 @@ ul {
 }
 .menu-fogyasztas {
   min-height: 250px;
-  width: auto;
+  width: 50%;
   border-radius: 10px;
   padding: 15px;
   text-align: left;
@@ -90,7 +90,7 @@ li {
 }
 .results__container {
   margin-top: 15px;
-  width: 92%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -105,7 +105,7 @@ li {
 }
 
 form {
-  width: 92%;
+  width: 90%;
   height: auto;
   position: relative;
   background-color: rgba(185, 190, 190, 0.664);
@@ -187,7 +187,7 @@ input:focus {
     justify-content: center;
   }
   .results__container > div > span {
-    font-size: 10px;
+    font-size: 14px;
     margin-left: 5px;
   }
   button {
@@ -218,7 +218,7 @@ input:focus {
   }
   .menu-buttons {
     margin: 10px auto;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -226,7 +226,7 @@ input:focus {
     column-gap: 0;
   }
   .menu-list {
-    width: 90%;
+    width: 100%;
     min-height: 60px;
   }
   form {
@@ -234,7 +234,7 @@ input:focus {
     margin-bottom: 10px;
   }
   .menu-fogyasztas {
-    width: 90%;
+    width: 100%;
     margin-bottom: 10px;
   }
   .form-buttons {

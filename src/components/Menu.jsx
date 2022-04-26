@@ -3,12 +3,9 @@ import SetCtx from "../setContext";
 
 const Menu = () => {
   const [selected, setSelected] = useState(-1);
-  const [selectedclass, setSelectedclass] = useState(false);
 
-  const { resData, setShowInput, displayMeal, setDisplayMeal } =
+  const { summaryData, setShowInput, displayMeal, setDisplayMeal } =
     useContext(SetCtx);
-
-  const activeClass = selectedclass ? "active" : "selected-food";
 
   const deleteItems = () => {
     if (selected < 0) {
@@ -17,7 +14,6 @@ const Menu = () => {
 
     displayMeal.splice(selected, 1);
     setDisplayMeal([...displayMeal], displayMeal);
-    setSelectedclass(false);
   };
 
   return (
@@ -26,10 +22,9 @@ const Menu = () => {
         <h3>Kaja lista:</h3>
         {displayMeal.map((item, index) => (
           <h3
-            className={activeClass}
+            className="selected-food"
             onClick={() => {
               setSelected(index);
-              setSelectedclass((selectedclass) => !selectedclass);
             }}
             key={index}
           >
@@ -45,10 +40,10 @@ const Menu = () => {
       <div className="menu-fogyasztas">
         <h2>Mai fogyasztás</h2>
         <ul>
-          <li>Fehérje: {resData[0].data.sumProt.toFixed(1)}</li>
-          <li>Zsírok: {resData[0].data.sumFat.toFixed(1)}</li>
-          <li>Szénhidrát: {resData[0].data.sumCarb.toFixed(1)}</li>
-          <li>Kalória: {resData[0].data.sumCal.toFixed(1)}</li>
+          <li>Fehérje: {summaryData[0].data.sumProt.toFixed(1)}</li>
+          <li>Zsírok: {summaryData[0].data.sumFat.toFixed(1)}</li>
+          <li>Szénhidrát: {summaryData[0].data.sumCarb.toFixed(1)}</li>
+          <li>Kalória: {summaryData[0].data.sumCal.toFixed(1)}</li>
         </ul>
       </div>
     </div>

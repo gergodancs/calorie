@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import SetCtx from "../setContext";
 
 const Results = () => {
-  const { resData, setResData } = useContext(SetCtx);
+  const { summaryData, setSumData } = useContext(SetCtx);
 
   const resetDaily = () => {
-    setResData([
+    setSumData([
       {
         data: {
           sumCal: 0,
@@ -26,10 +26,10 @@ const Results = () => {
       <div>
         <h5>Napi átlag</h5>
 
-        <span>Kalória: {resData[0].data.avgCal}</span>
-        <span>Fehérje: {resData[0].data.avgProt} </span>
-        <span>Zsírok: {resData[0].data.avgFat} </span>
-        <span>Szénhidrát: {resData[0].data.avgCarb} </span>
+        <span>Kalória: {summaryData[0].data.avgCal}</span>
+        <span>Fehérje: {summaryData[0].data.avgProt} </span>
+        <span>Zsírok: {summaryData[0].data.avgFat} </span>
+        <span>Szénhidrát: {summaryData[0].data.avgCarb} </span>
       </div>
 
       <button onClick={resetDaily}>Nulláz</button>
