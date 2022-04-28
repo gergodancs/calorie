@@ -240,6 +240,7 @@ input:focus {
   .menu-fogyasztas {
     width: 100%;
     margin-bottom: 10px;
+    min-height: 60px;
   }
   .form-buttons {
     margin: 10px auto;

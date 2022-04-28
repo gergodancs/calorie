@@ -1,11 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import SetCtx from "../setContext";
 
 const Menu = () => {
   const [selected, setSelected] = useState(-1);
+  const [isShowDetails, setIsShowDetails] = useState(false);
 
   const { postData, summaryData, setShowInput, setPostData } =
     useContext(SetCtx);
+
+  let toggle = summaryData?.data?.sumCarb > 0;
+
+  useEffect(() => {
+    toggle && setIsShowDetails(true);
+  }, [summaryData]);
 
   const deleteItems = () => {
     if (selected < 0) {
@@ -40,12 +47,14 @@ const Menu = () => {
       </div>
       <div className="menu-fogyasztas">
         <h2>Mai fogyasztás</h2>
-        <ul>
-          <li>Fehérje: {summaryData?.data?.sumProt.toFixed(1)}</li>
-          <li>Zsírok: {summaryData?.data?.sumFat.toFixed(1)}</li>
-          <li>Szénhidrát: {summaryData?.data?.sumCarb.toFixed(1)}</li>
-          <li>Kalória: {summaryData?.data?.sumCal.toFixed(1)}</li>
-        </ul>
+        {isShowDetails && (
+          <ul>
+            <li>Fehérje: {summaryData?.data?.sumProt.toFixed(1)}</li>
+            <li>Zsírok: {summaryData?.data?.sumFat.toFixed(1)}</li>
+            <li>Szénhidrát: {summaryData?.data?.sumCarb.toFixed(1)}</li>
+            <li>Kalória: {summaryData?.data?.sumCal.toFixed(1)}</li>
+          </ul>
+        )}
       </div>
     </div>
   );
