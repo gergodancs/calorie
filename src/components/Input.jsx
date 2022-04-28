@@ -26,6 +26,10 @@ const Input = () => {
     autoComp2();
   }, [input]);
 
+  useEffect(() => {
+    summarizeData();
+  }, [postData]);
+
   const summarizeData = () => {
     fetch("https://calorie-calculator-spring.herokuapp.com/getmealstatistic", {
       method: "POST",
@@ -33,17 +37,16 @@ const Input = () => {
       headers: { "Content-type": "application/json; charset=UTF-8" },
     })
       .then((response) => response.json())
-      .then((data) => setSumData([{ data }]));
+      .then((data) => setSumData({ data }));
+    console.log("summarize", postData);
   };
 
   const onSubmitForm = (e) => {
     e.preventDefault();
     setDisplayMeal([...displayMeal, `${input}: ${amount}`]);
     setShowList(false);
-    setPostData([...postData, { id: id, name: input, amount: Number(amount) }]);
-    summarizeData();
-    // setInput("");
-    // setAmount(0);
+    setPostData([{ id: id, name: input, amount: Number(amount) }, ...postData]);
+    console.log(postData);
   };
 
   return (

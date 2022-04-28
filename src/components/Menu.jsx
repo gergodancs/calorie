@@ -40,10 +40,10 @@ const Menu = () => {
       <div className="menu-fogyasztas">
         <h2>Mai fogyasztás</h2>
         <ul>
-          <li>Fehérje: {summaryData[0].data.sumProt.toFixed(1)}</li>
-          <li>Zsírok: {summaryData[0].data.sumFat.toFixed(1)}</li>
-          <li>Szénhidrát: {summaryData[0].data.sumCarb.toFixed(1)}</li>
-          <li>Kalória: {summaryData[0].data.sumCal.toFixed(1)}</li>
+          <li>Fehérje: {summaryData?.data?.sumProt.toFixed(1)}</li>
+          <li>Zsírok: {summaryData?.data?.sumFat.toFixed(1)}</li>
+          <li>Szénhidrát: {summaryData?.data?.sumCarb.toFixed(1)}</li>
+          <li>Kalória: {summaryData?.data?.sumCal.toFixed(1)}</li>
         </ul>
       </div>
     </div>

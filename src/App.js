@@ -9,20 +9,7 @@ function App() {
   const [displayMeal, setDisplayMeal] = useState([]);
   const [data, setData] = useState([]);
   const [showInput, setShowInput] = useState(false);
-  const [summaryData, setSumData] = useState([
-    {
-      data: {
-        sumCal: 0,
-        sumCarb: 0,
-        sumFat: 0,
-        sumProt: 0,
-        avgCal: 0,
-        avgCarb: 0,
-        avgFat: 0,
-        avgProt: 0,
-      },
-    },
-  ]);
+  const [summaryData, setSumData] = useState({});
 
   const url = "https://calorie-calculator-spring.herokuapp.com/getallmeal";
 
