@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/calorie/static/css/main.2b3a3d3c.css",
-    "main.js": "/calorie/static/js/main.b4df90cb.js",
+    "main.css": "/calorie/static/css/main.4cf10676.css",
+    "main.js": "/calorie/static/js/main.83733dbc.js",
     "index.html": "/calorie/index.html",
-    "main.2b3a3d3c.css.map": "/calorie/static/css/main.2b3a3d3c.css.map",
-    "main.b4df90cb.js.map": "/calorie/static/js/main.b4df90cb.js.map"
+    "main.4cf10676.css.map": "/calorie/static/css/main.4cf10676.css.map",
+    "main.83733dbc.js.map": "/calorie/static/js/main.83733dbc.js.map"
   },
   "entrypoints": [
-    "static/css/main.2b3a3d3c.css",
-    "static/js/main.b4df90cb.js"
+    "static/css/main.4cf10676.css",
+    "static/js/main.83733dbc.js"
   ]
 }
