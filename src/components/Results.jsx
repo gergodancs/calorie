@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import React, { useContext, useState, useEffect } from "react";
 import SetCtx from "../setContext";
 
