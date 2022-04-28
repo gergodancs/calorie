@@ -8,17 +8,15 @@ const Input = () => {
   const [input, setInput] = useState("");
   const [amount, setAmount] = useState(0);
   const [id, setId] = useState(0);
-  //const [postData, setPostData] = useState([]);
+
   const [showList, setShowList] = useState(false);
   const [sugg, setSugg] = useState([]);
 
   const { data, setShowInput, setSumData, postData, setPostData } =
     useContext(SetCtx);
 
-  let filtered;
-
   const autoComp2 = () => {
-    filtered = data.filter((item) => item.name.includes(input));
+    const filtered = data.filter((item) => item.name.includes(input));
     setSugg(filtered);
   };
 
@@ -27,10 +25,10 @@ const Input = () => {
   }, [input]);
 
   useEffect(() => {
-    summarizeData();
+    sendDataToServer();
   }, [postData]);
 
-  const summarizeData = () => {
+  const sendDataToServer = () => {
     fetch("https://calorie-calculator-spring.herokuapp.com/getmealstatistic", {
       method: "POST",
       body: JSON.stringify(postData),
@@ -43,7 +41,8 @@ const Input = () => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-
+    if (input.length < 1) return alert("Válassz egy ételt");
+    if (amount === 0) return alert("Add meg a mennyiséget");
     setShowList(false);
     setPostData([...postData, { id: id, name: input, amount: Number(amount) }]);
   };
