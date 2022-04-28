@@ -6,8 +6,8 @@ import Menu from "./components/Menu";
 import SetCtx from "./setContext";
 
 function App() {
-  const [displayMeal, setDisplayMeal] = useState([]);
   const [data, setData] = useState([]);
+  const [postData, setPostData] = useState([]);
   const [showInput, setShowInput] = useState(false);
   const [summaryData, setSumData] = useState({});
 
@@ -33,9 +33,10 @@ function App() {
         summaryData,
         setSumData,
         setShowInput,
-        displayMeal,
-        setDisplayMeal,
+
         data,
+        postData,
+        setPostData,
       }}
     >
       <div className="App">

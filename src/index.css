@@ -24,11 +24,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-h5 {
-  font-size: 25px;
-  text-align: center;
-  display: inline-block;
-}
+
 .App {
   position: relative;
   top: 40px;
@@ -100,8 +96,16 @@ li {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.459) inset,
     -2px -2px 3px rgba(0, 0, 0, 0.486) inset;
 }
-.results__container > div > span {
-  margin-left: 20px;
+.results__container > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+h5 {
+  font-size: 25px;
+  text-align: center;
+  display: inline-block;
 }
 
 form {

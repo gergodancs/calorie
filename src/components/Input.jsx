@@ -8,11 +8,11 @@ const Input = () => {
   const [input, setInput] = useState("");
   const [amount, setAmount] = useState(0);
   const [id, setId] = useState(0);
-  const [postData, setPostData] = useState([]);
+  //const [postData, setPostData] = useState([]);
   const [showList, setShowList] = useState(false);
   const [sugg, setSugg] = useState([]);
 
-  const { data, setShowInput, setSumData, setDisplayMeal, displayMeal } =
+  const { data, setShowInput, setSumData, postData, setPostData } =
     useContext(SetCtx);
 
   let filtered;
@@ -43,10 +43,9 @@ const Input = () => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    setDisplayMeal([...displayMeal, `${input}: ${amount}`]);
+
     setShowList(false);
     setPostData([{ id: id, name: input, amount: Number(amount) }, ...postData]);
-    console.log(postData);
   };
 
   return (

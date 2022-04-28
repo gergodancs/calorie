@@ -4,7 +4,7 @@ import SetCtx from "../setContext";
 const Menu = () => {
   const [selected, setSelected] = useState(-1);
 
-  const { summaryData, setShowInput, displayMeal, setDisplayMeal } =
+  const { postData, summaryData, setShowInput, setPostData } =
     useContext(SetCtx);
 
   const deleteItems = () => {
@@ -12,25 +12,26 @@ const Menu = () => {
       return alert("válassz egy elemet!");
     }
 
-    displayMeal.splice(selected, 1);
-    setDisplayMeal([...displayMeal], displayMeal);
+    postData.splice(selected, 1);
+    setPostData([...postData], postData);
   };
-
+  // console.log(postData);
   return (
     <div className="menu__container">
       <div className="menu-list">
         <h3>Kaja lista:</h3>
-        {displayMeal.map((item, index) => (
-          <h3
-            className="selected-food"
-            onClick={() => {
-              setSelected(index);
-            }}
-            key={index}
-          >
-            {item}
-          </h3>
-        ))}
+        {postData &&
+          postData.map((item, index) => (
+            <h3
+              className="selected-food"
+              onClick={() => {
+                setSelected(index);
+              }}
+              key={index}
+            >
+              {item?.name}: {item.amount}g
+            </h3>
+          ))}
       </div>
       <div className="menu-buttons">
         <button onClick={() => setShowInput(true)}>Új étel</button>
