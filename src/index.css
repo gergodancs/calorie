@@ -170,6 +170,11 @@ input:focus {
   cursor: pointer;
   transition-duration: 0.2s;
 }
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .active {
   text-decoration: line-through;
 }
@@ -179,6 +184,18 @@ input:focus {
 }
 .form-buttons > button {
   margin-left: 15px;
+}
+button.del {
+  background-color: transparent;
+  width: auto;
+}
+.h-5 {
+  width: 25px;
+  color: red;
+  background-color: none;
+}
+.menu-buttons {
+  margin-bottom: 5px;
 }
 @media screen and (max-width: 1000px) {
   h5 {
@@ -199,24 +216,14 @@ input:focus {
     width: 50%;
     font-size: 18px;
   }
-  .menu-buttons > button:nth-of-type(2) {
-    border-radius: 0;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+  .menu-buttons > button {
+    width: 100%;
   }
-  .menu-buttons > button:nth-of-type(1) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  .menu-buttons > button:nth-of-type(3) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
   .App {
     width: 90%;
   }
   .menu__container {
+    row-gap: 1rem;
     flex-direction: column;
     margin-bottom: 10px;
   }
@@ -256,5 +263,8 @@ input:focus {
   .form-buttons > button:nth-of-type(2) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+  .list {
+    justify-content: space-between;
   }
 }
