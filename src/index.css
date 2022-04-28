@@ -174,6 +174,8 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  animation-name: list;
+  animation-duration: 0.5s;
 }
 .active {
   text-decoration: line-through;
@@ -266,5 +268,13 @@ button.del {
   }
   .list {
     justify-content: space-between;
+  }
+}
+@keyframes list {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
   }
 }

@@ -45,7 +45,7 @@ const Input = () => {
     e.preventDefault();
 
     setShowList(false);
-    setPostData([{ id: id, name: input, amount: Number(amount) }, ...postData]);
+    setPostData([...postData, { id: id, name: input, amount: Number(amount) }]);
   };
 
   return (
