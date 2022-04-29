@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import SetCtx from "../setContext";
 
 const Menu = () => {
-  const [selected, setSelected] = useState(-1);
   const [isShowDetails, setIsShowDetails] = useState(false);
 
   const { postData, summaryData, setShowInput, setPostData } =

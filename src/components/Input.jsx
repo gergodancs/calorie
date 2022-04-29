@@ -5,24 +5,19 @@ import SetCtx from "../setContext";
 import AutoComplete from "./AutoComplete";
 
 const Input = () => {
-  const [input, setInput] = useState("");
   const [amount, setAmount] = useState(0);
   const [id, setId] = useState(0);
-
   const [showList, setShowList] = useState(false);
-  const [sugg, setSugg] = useState([]);
 
-  const { data, setShowInput, setSumData, postData, setPostData } =
-    useContext(SetCtx);
-
-  const autoComp2 = () => {
-    const filtered = data.filter((item) => item.name.includes(input));
-    setSugg(filtered);
-  };
-
-  useEffect(() => {
-    autoComp2();
-  }, [input]);
+  const {
+    input,
+    setInput,
+    data,
+    setShowInput,
+    setSumData,
+    postData,
+    setPostData,
+  } = useContext(SetCtx);
 
   useEffect(() => {
     sendDataToServer();
@@ -39,6 +34,11 @@ const Input = () => {
     console.log("summarize", postData);
   };
 
+  const onChangeInput = (e) => {
+    setInput(e.target.value);
+    setShowList(true);
+  };
+
   const onSubmitForm = (e) => {
     e.preventDefault();
     if (input.length < 1) return alert("Válassz egy ételt");
@@ -51,14 +51,7 @@ const Input = () => {
     <>
       <form onSubmit={onSubmitForm}>
         <label>Food :</label>
-        <input
-          value={input}
-          onChange={(e) => {
-            setInput(e.target.value);
-            setShowList(true);
-          }}
-          type="text"
-        />
+        <input value={input} onChange={onChangeInput} type="text" />
         <label>Amount:</label>
         <input
           type="number"
@@ -76,7 +69,7 @@ const Input = () => {
       </form>
       {showList && (
         <AutoComplete
-          sugg={sugg}
+          data={data}
           setInput={setInput}
           setId={setId}
           setShowList={setShowList}

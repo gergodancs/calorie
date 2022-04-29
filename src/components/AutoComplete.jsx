@@ -3,7 +3,7 @@ import React from "react";
 const AutoComplete = (props) => {
   return (
     <ul className="autocomplete">
-      {props.sugg.map((item, index) => (
+      {props.data.map((item, index) => (
         <li
           onClick={() => {
             props.setInput(item.name);

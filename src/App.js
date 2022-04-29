@@ -7,11 +7,12 @@ import SetCtx from "./setContext";
 
 function App() {
   const [data, setData] = useState([]);
+  const [input, setInput] = useState("");
   const [postData, setPostData] = useState([]);
   const [showInput, setShowInput] = useState(false);
   const [summaryData, setSumData] = useState({});
 
-  const url = "https://calorie-calculator-spring.herokuapp.com/getallmeal";
+  const url = `https://calorie-calculator-spring.herokuapp.com/filters?query=${input}`;
 
   const mealItemsFetch = () => {
     fetch(url)
@@ -25,7 +26,7 @@ function App() {
 
   useEffect(() => {
     mealItemsFetch();
-  }, []);
+  }, [input]);
 
   return (
     <SetCtx.Provider
@@ -33,7 +34,8 @@ function App() {
         summaryData,
         setSumData,
         setShowInput,
-
+        input,
+        setInput,
         data,
         postData,
         setPostData,
